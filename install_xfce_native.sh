@@ -207,21 +207,21 @@ sed -i "s/phoenixbyrd/$username/" $HOME/.config/starship.toml
 
 # Download Wallpaper
 wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/dark_waves.png
-mv dark_waves.png $PREFIX/share/backgrounds/xfce/
+mv -f dark_waves.png $PREFIX/share/backgrounds/xfce/
 
 # Install WhiteSur-Dark Theme
 # wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
 # unzip 2023-04-26.zip
 # tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
-# mv WhiteSur-Dark/ $PREFIX/share/themes/
+# mv -f WhiteSur-Dark/ $PREFIX/share/themes/
 rm -rf WhiteSur*
 rm 2023-04-26.zip
 
 # Install Fluent Cursor Icon Theme
 wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2023-02-01.zip
 unzip 2023-02-01.zip
-mv Fluent-icon-theme-2023-02-01/cursors/dist $PREFIX/share/icons/ 
-mv Fluent-icon-theme-2023-02-01/cursors/dist-dark $PREFIX/share/icons/
+mv -f Fluent-icon-theme-2023-02-01/cursors/dist $PREFIX/share/icons/ 
+mv -f Fluent-icon-theme-2023-02-01/cursors/dist-dark $PREFIX/share/icons/
 rm -rf $HOME//Fluent*
 rm 2023-02-01.zip
 
@@ -628,22 +628,22 @@ EOF
 # Setup Fonts
 wget https://github.com/microsoft/cascadia-code/releases/download/v2111.01/CascadiaCode-2111.01.zip
 unzip CascadiaCode-2111.01.zip
-mv otf/static/* .fonts/ && rm -rf otf
-mv ttf/* .fonts/ && rm -rf ttf/
+mv -f otf/static/* .fonts/ && rm -rf otf
+mv -f ttf/* .fonts/ && rm -rf ttf/
 rm -rf woff2/ && rm -rf CascadiaCode-2111.01.zip
 
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
 unzip Meslo.zip
-mv *.ttf .fonts/
+mv -f *.ttf .fonts/
 rm Meslo.zip
 rm LICENSE.txt
 rm readme.md
 
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/NotoColorEmoji-Regular.ttf
-mv NotoColorEmoji-Regular.ttf .fonts
+mv -f NotoColorEmoji-Regular.ttf .fonts
 
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/font.ttf
-mv font.ttf .termux/font.ttf
+mv -f font.ttf .termux/font.ttf
 
 # Create start script
 cat <<'EOF' > $PREFIX/bin/start
@@ -737,7 +737,7 @@ Path=
 StartupNotify=false
 " > $HOME/Desktop/kill_termux_x11.desktop
 chmod +x $HOME/Desktop/kill_termux_x11.desktop
-mv $HOME/Desktop/kill_termux_x11.desktop $PREFIX/share/applications
+mv -f $HOME/Desktop/kill_termux_x11.desktop $PREFIX/share/applications
 
 # Create prun script
 cat <<'EOF' > $PREFIX/bin/prun
@@ -784,7 +784,7 @@ Terminal=false
 StartupNotify=false
 " > $HOME/Desktop/App-Installer.desktop
 chmod +x $HOME/Desktop/App-Installer.desktop
-cp $HOME/Desktop/App-Installer.desktop $PREFIX/share/applications
+cp -f $HOME/Desktop/App-Installer.desktop $PREFIX/share/applications
 
 # cp2menu
 
@@ -838,7 +838,7 @@ eval "$(starship init bash)"
 # Set proot timezone
 timezone=$(getprop persist.sys.timezone)
 pd login debian --shared-tmp -- env DISPLAY=:0 rm /etc/localtime
-pd login debian --shared-tmp -- env DISPLAY=:0 cp /usr/share/zoneinfo/$timezone /etc/localtime
+pd login debian --shared-tmp -- env DISPLAY=:0 cp -f /usr/share/zoneinfo/$timezone /etc/localtime
 
 # Setup Hardware Acceleration in proot
 pd login debian --shared-tmp -- env DISPLAY=:0 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
@@ -851,7 +851,7 @@ curl -o $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.con
 sed -i "s/phoenixbyrd/$username/" $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config/starship.toml
 
 # Apply cursor theme
-cp -r $PREFIX/share/icons/dist-dark $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/icons/dist-dark
+cp -rf $PREFIX/share/icons/dist-dark $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/icons/dist-dark
 cat <<'EOF' > $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.Xresources
 Xcursor.theme: dist-dark
 EOF
@@ -859,14 +859,14 @@ EOF
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/conky.tar.gz
 tar -xvzf conky.tar.gz
 rm conky.tar.gz
-mv $HOME/.config/conky/ $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config/
+mv -f $HOME/.config/conky/ $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config/
 
 # Conky
-cp $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/conky.desktop $HOME/.config/autostart/
+cp -f $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/conky.desktop $HOME/.config/autostart/
 sed -i 's|^Exec=.*$|Exec=prun conky -c .config/conky/Alterf/Alterf.conf|' $HOME/.config/autostart/conky.desktop
 
 # Flameshot
-cp $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/org.flameshot.Flameshot.desktop $HOME/.config/autostart/
+cp -f $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/applications/org.flameshot.Flameshot.desktop $HOME/.config/autostart/
 sed -i 's|^Exec=.*$|Exec=prun flameshot|' $HOME/.config/autostart/org.flameshot.Flameshot.desktop
 
 chmod +x $HOME/.config/autostart/*.desktop
