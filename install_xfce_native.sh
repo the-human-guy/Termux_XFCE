@@ -210,10 +210,10 @@ wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/dark_waves.p
 mv dark_waves.png $PREFIX/share/backgrounds/xfce/
 
 # Install WhiteSur-Dark Theme
-wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
-unzip 2023-04-26.zip
-tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
-mv WhiteSur-Dark/ $PREFIX/share/themes/
+# wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
+# unzip 2023-04-26.zip
+# tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
+# mv WhiteSur-Dark/ $PREFIX/share/themes/
 rm -rf WhiteSur*
 rm 2023-04-26.zip
 
