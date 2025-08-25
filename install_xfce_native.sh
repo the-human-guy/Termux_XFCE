@@ -210,20 +210,22 @@ wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/dark_waves.p
 mv -f dark_waves.png $PREFIX/share/backgrounds/xfce/
 
 # Install WhiteSur-Dark Theme
-# wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
-# unzip 2023-04-26.zip
-# tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
-# mv -f WhiteSur-Dark/ $PREFIX/share/themes/
-# rm -rf WhiteSur*
-# rm 2023-04-26.zip
+wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
+rm -rf 2023-04-26
+unzip 2023-04-26.zip
+tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
+mv -f WhiteSur-Dark/ $PREFIX/share/themes/
+rm -rf WhiteSur*
+rm -rf 2023-04-26.zip
 
 # Install Fluent Cursor Icon Theme
 wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2023-02-01.zip
+rm -rf 2023-02-01
 unzip 2023-02-01.zip
 mv -f Fluent-icon-theme-2023-02-01/cursors/dist $PREFIX/share/icons/ 
 mv -f Fluent-icon-theme-2023-02-01/cursors/dist-dark $PREFIX/share/icons/
 rm -rf $HOME//Fluent*
-rm 2023-02-01.zip
+rm -rf 2023-02-01.zip
 
 # Create xsettings.xml for Termux
 cat <<'EOF' > $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
