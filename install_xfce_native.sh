@@ -214,8 +214,8 @@ mv -f dark_waves.png $PREFIX/share/backgrounds/xfce/
 # unzip 2023-04-26.zip
 # tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
 # mv -f WhiteSur-Dark/ $PREFIX/share/themes/
-rm -rf WhiteSur*
-rm 2023-04-26.zip
+# rm -rf WhiteSur*
+# rm 2023-04-26.zip
 
 # Install Fluent Cursor Icon Theme
 wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2023-02-01.zip
